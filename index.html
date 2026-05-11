@@ -7,219 +7,134 @@
   <!-- Google Font (cartoony). Fallback to Comic Sans MS if not available. -->
   <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg: #eafaf0; /* soft pastel green background */
-      --card: #ffffff;
-      --accent: #9ae6b4; /* pastel mint */
-      --heart-pink: #ff9bb3;
-      --muted: #6b6b6b;
-    }
+  :root {
+    --bg: #eafaf0;
+    --card: #ffffff;
+    --accent: #9ae6b4;
+    --heart-pink: #ff9bb3;
+    --muted: #6b6b6b;
+  }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Gaegu', 'Comic Sans MS', cursive;
-      background: radial-gradient(circle at 10% 10%, #f5fff8, var(--bg));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow:hidden;
-      padding:24px;
-    }
+  * { box-sizing: border-box; }
+  
+  html, body { 
+    height: 100%; 
+    width: 100%;
+    margin: 0; 
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+  }
 
-    /* Floating hearts container (behind the card) */
-    .floating-hearts{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      overflow:hidden;
-    }
-    .floating-hearts .f-heart{
-      position:absolute;
-      width:18px;
-      height:18px;
-      transform:rotate(-45deg);
-      background: linear-gradient(135deg,#ffb3c4,#ff9bb3);
-      left:50%;
-      bottom:-40px;
-      opacity:0.9;
-      animation: rise 6s linear infinite;
-      border-radius:3px;
-    }
-    .floating-hearts .f-heart:before,
-    .floating-hearts .f-heart:after{
-      content:"";
-      position:absolute;
-      width:18px;
-      height:18px;
-      background: inherit;
-      border-radius:50%;
-    }
-    .floating-hearts .f-heart:before{ top:-9px; left:0 }
-    .floating-hearts .f-heart:after{ left:9px; top:0 }
-    @keyframes rise{
-      0%{transform:translateY(0) rotate(-45deg) scale(0.9); opacity:0}
-      10%{opacity:0.9}
-      100%{transform:translateY(-120vh) rotate(-45deg) scale(1.1); opacity:0}
-    }
+  body {
+    font-family: 'Gaegu', 'Comic Sans MS', cursive;
+    background: radial-gradient(circle at 10% 10%, #f5fff8, var(--bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    /* Card */
-    .card-wrap{
-      position:relative;
-      width:90vw;
-      max-width:320px;
-      z-index:2;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:72vh;
-    }
-    .card{
-      width:100%;
-      background: linear-gradient(180deg,var(--card), #fff8f9);
-      border-radius:20px;
-      box-shadow: 0 10px 30px rgba(15,40,20,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
-      padding:30px 20px;
-      display:grid;
-      grid-template-rows:auto minmax(280px, 1fr) auto auto;
-      align-items:center;
-      justify-items:center;
-      gap:10px;
-      border:6px solid rgba(255,255,255,0.55);
-    }
+  /* Force the background to be visible on the sides */
+  .card-wrap {
+    width: 100%;
+    max-width: 350px; /* This "hardcodes" the width to look like the desktop view */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+  }
 
-    h1{
-      margin:0;
-      color:#1a4a2f;
-      font-size:1.2rem;
-      text-align:center;
-      text-shadow: 0 2px 0 rgba(255,255,255,0.6);
-    }
-    p.sub{
-      margin:0;
-      color:var(--muted);
-      font-size:0.95rem;
-      text-align:center;
-    }
+  .card {
+    width: 100%;
+    background: linear-gradient(180deg, var(--card), #fff8f9);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(15,40,20,0.08);
+    padding: 40px 20px; /* Increased vertical padding for that "spaced" look */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Hardcoded spacing between elements */
+    border: 6px solid rgba(255,255,255,0.6);
+    text-align: center;
+  }
 
-    /* Heart container */
-    .hero{
-      width:min(85vw, 280px);
-      aspect-ratio:3/4;
-      display:block;
-      position:relative;
-      justify-self:center;
-      align-self:center;
-    }
+  h1 {
+    margin: 0;
+    color: #1a4a2f;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
 
-    .heart-frame{
-      width:100%;
-      height:100%;
-      display:block;
-      position:relative;
-      filter: drop-shadow(0 8px 18px rgba(255,100,140,0.12)) drop-shadow(0 2px 6px rgba(0,0,0,0.06));
-      transform-origin:center;
-      animation: pulse 0.6s ease-in-out infinite;
-      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
-      -webkit-mask-repeat:no-repeat;
-      mask-repeat:no-repeat;
-      -webkit-mask-size:100% 100%;
-      mask-size:100% 100%;
-      -webkit-mask-position:center;
-      mask-position:center;
-    }
+  /* The Heart Container - Fixed Sizes */
+  .hero {
+    width: 220px; /* Hardcoded size to ensure it never hits the edges */
+    height: 250px;
+    position: relative;
+    margin: 0 auto;
+  }
 
-    .heart-photo{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      display:block;
-      background:#fff8f9;
-      transform:scale(0.82);
-      transform-origin:center;
-    }
+  .heart-frame {
+    width: 100%;
+    height: 100%;
+    animation: pulse 0.8s ease-in-out infinite;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+    -webkit-mask-size: cover;
+    mask-size: cover;
+  }
 
-    .heart-ornament{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      pointer-events:none;
-    }
+  .heart-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(0.85); /* Creates the "inner" frame look */
+  }
 
-    .heart-outline{
-      fill:transparent;
-      stroke:rgba(255,255,255,0.9);
-      stroke-width:1.5;
-    }
+  .heart-ornament {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
 
-    @keyframes pulse{
-      0%{transform:scale(1)}
-      50%{transform:scale(1.06)}
-      100%{transform:scale(1)}
-    }
+  .heart-outline {
+    fill: transparent;
+    stroke: rgba(255,255,255,0.9);
+    stroke-width: 2;
+  }
 
-    /* Small caption under heart */
-    .caption{
-      margin-top:6px;
-      font-size:0.85rem;
-      color:#4a7a5d;
-    }
+  .caption {
+    font-size: 0.9rem;
+    color: #4a7a5d;
+    max-width: 80%;
+  }
 
-    p.sub a {
-      color: #4a7a5d;
-      text-decoration: none;
-      font-weight: bold;
-      border-bottom: 2px dashed #9ae6b4;
-      transition: all 0.3s ease;
-    }
+  p.sub a {
+    color: #4a7a5d;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px dashed #9ae6b4;
+  }
 
-    p.sub a:hover {
-      color: #1a4a2f;
-      background-color: #f0fff4;
-    }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
-    /* Responsive tweaks */
-    @media (min-width: 480px) {
-      .card-wrap {
-        max-width: 400px;
-      }
-      h1 {
-        font-size: 1.35rem;
-      }
-      .hero {
-        width: min(90vw, 340px);
-      }
-    }
-
-    @media (min-height:760px){
-      .card{padding:28px}
-      h1{font-size:1.65rem}
-    }
-
-    @media (min-width: 420px){
-      .hero{
-        width:84%;
-        max-width:350px;
-      }
-      .card{
-        gap:14px;
-      }
-      h1{
-        font-size:1.8rem;
-      }
-      .heart-photo{
-        transform:scale(0.78);
-        object-position:center;
-      }
-    }
-  </style>
+  /* Floating Hearts Background */
+  .floating-hearts { position: fixed; inset: 0; z-index: 0; }
+  .f-heart { 
+    position: absolute; width: 15px; height: 15px; background: #ff9bb3; 
+    transform: rotate(-45deg); border-radius: 2px; animation: rise 6s infinite;
+  }
+  .f-heart::before, .f-heart::after { content: ""; position: absolute; width: 15px; height: 15px; background: inherit; border-radius: 50%; }
+  .f-heart::before { top: -8px; left: 0; }
+  .f-heart::after { left: 8px; top: 0; }
+  @keyframes rise {
+    0% { bottom: -20px; opacity: 0; transform: translateY(0) rotate(-45deg) scale(0.5); }
+    50% { opacity: 0.8; }
+    100% { bottom: 110%; opacity: 0; transform: translateY(-100px) rotate(-45deg) scale(1.2); }
+  }
+</style>
 </head>
 <body>
 
