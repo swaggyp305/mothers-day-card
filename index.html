@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Mother's Day, Angela Mae!</title>
+  <!-- Google Font (cartoony). Fallback to Comic Sans MS if not available. -->
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #eafaf0; /* soft pastel green background */
+      --card: #ffffff;
+      --accent: #9ae6b4; /* pastel mint */
+      --heart-pink: #ff9bb3;
+      --muted: #6b6b6b;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Gaegu', 'Comic Sans MS', cursive;
+      background: radial-gradient(circle at 10% 10%, #f5fff8, var(--bg));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow:hidden;
+      padding:24px;
+    }
+
+    /* Floating hearts container (behind the card) */
+    .floating-hearts{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+    .floating-hearts .f-heart{
+      position:absolute;
+      width:18px;
+      height:18px;
+      transform:rotate(-45deg);
+      background: linear-gradient(135deg,#ffb3c4,#ff9bb3);
+      left:50%;
+      bottom:-40px;
+      opacity:0.9;
+      animation: rise 6s linear infinite;
+      border-radius:3px;
+    }
+    .floating-hearts .f-heart:before,
+    .floating-hearts .f-heart:after{
+      content:"";
+      position:absolute;
+      width:18px;
+      height:18px;
+      background: inherit;
+      border-radius:50%;
+    }
+    .floating-hearts .f-heart:before{ top:-9px; left:0 }
+    .floating-hearts .f-heart:after{ left:9px; top:0 }
+    @keyframes rise{
+      0%{transform:translateY(0) rotate(-45deg) scale(0.9); opacity:0}
+      10%{opacity:0.9}
+      100%{transform:translateY(-120vh) rotate(-45deg) scale(1.1); opacity:0}
+    }
+
+    /* Card */
+    .card-wrap{
+      position:relative;
+      width:90vw;
+      max-width:400px;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72vh;
+    }
+    .card{
+      width:100%;
+      background: linear-gradient(180deg,var(--card), #fff8f9);
+      border-radius:20px;
+      box-shadow: 0 10px 30px rgba(15,40,20,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding:22px;
+      display:grid;
+      grid-template-rows:auto minmax(280px, 1fr) auto auto;
+      align-items:center;
+      justify-items:center;
+      gap:10px;
+      border:6px solid rgba(255,255,255,0.55);
+    }
+
+    h1{
+      margin:0;
+      color:#1a4a2f;
+      font-size:1.35rem;
+      text-align:center;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.6);
+    }
+    p.sub{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+      text-align:center;
+    }
+
+    /* Heart container */
+    .hero{
+      width:min(94vw, 360px);
+      aspect-ratio:3/4;
+      display:block;
+      position:relative;
+      justify-self:center;
+      align-self:center;
+
+      transform: translateX(-40px); /* Adjust the -10px until it looks perfect to you */
+    }
+
+    .heart-frame{
+      width:100%;
+      height:100%;
+      display:block;
+      position:relative;
+      filter: drop-shadow(0 8px 18px rgba(255,100,140,0.12)) drop-shadow(0 2px 6px rgba(0,0,0,0.06));
+      transform-origin:center;
+      animation: pulse 0.6s ease-in-out infinite;
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+      -webkit-mask-repeat:no-repeat;
+      mask-repeat:no-repeat;
+      -webkit-mask-size:100% 100%;
+      mask-size:100% 100%;
+      -webkit-mask-position:center;
+      mask-position:center;
+    }
+
+    .heart-photo{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      background:#fff8f9;
+      transform:scale(0.82);
+      transform-origin:center;
+    }
+
+    .heart-ornament{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+    }
+
+    .heart-outline{
+      fill:transparent;
+      stroke:rgba(255,255,255,0.9);
+      stroke-width:1.5;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.06)}
+      100%{transform:scale(1)}
+    }
+
+    /* Small caption under heart */
+    .caption{
+      margin-top:6px;
+      font-size:0.85rem;
+      color:#4a7a5d;
+    }
+
+    /* Responsive tweaks */
+    @media (min-height:760px){
+      .card{padding:28px}
+      h1{font-size:1.65rem}
+    }
+
+    @media (min-width: 420px){
+      .hero{
+        width:84%;
+        max-width:350px;
+      }
+      .card{
+        gap:14px;
+      }
+      h1{
+        font-size:1.8rem;
+      }
+      .heart-photo{
+        transform:scale(0.78);
+        object-position:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Usage: Replace the `src` on the <img> below with your photo URL. -->
+  <div class="floating-hearts" aria-hidden="true">
+    <div class="f-heart" style="left:12%; animation-duration:7s; animation-delay:0s;"></div>
+    <div class="f-heart" style="left:28%; animation-duration:6s; animation-delay:1s; transform:scale(0.9) rotate(-45deg);"></div>
+    <div class="f-heart" style="left:52%; animation-duration:8s; animation-delay:0.6s; transform:scale(1.1) rotate(-45deg);"></div>
+    <div class="f-heart" style="left:76%; animation-duration:6.5s; animation-delay:0.2s; transform:scale(0.95) rotate(-45deg);"></div>
+    <div class="f-heart" style="left:88%; animation-duration:7.8s; animation-delay:1.2s; transform:scale(0.85) rotate(-45deg);"></div>
+  </div>
+
+  <div class="card-wrap">
+    <article class="card" role="article" aria-label="Mother's Day card for Angela Mae">
+      <h1>Happy Mother's Day, Angela Mae!</h1>
+      <div class="hero">
+        <figure class="heart-frame" aria-hidden="false">
+          <img class="heart-photo" src="kidswuvu.jpeg" alt="Photo of Angela Mae inside a heart frame" />
+          <svg class="heart-ornament" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <path class="heart-outline" d="M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z" />
+          </svg>
+        </figure>
+      </div>
+      <div class="caption">Sending you big hugs and sparkly smiles 💚</div>
+      <p class="sub"><a href="https://www.youtube.com/watch?v=vtYR3MRmfWE" target="_blank" rel="noopener noreferrer">Click here!</a></p>
+    </article>
+  </div>
+
+</body>
+</html>
