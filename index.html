@@ -71,7 +71,7 @@
     .card-wrap{
       position:relative;
       width:90vw;
-      max-width:400px;
+      max-width:320px;
       z-index:2;
       display:flex;
       align-items:center;
@@ -83,7 +83,7 @@
       background: linear-gradient(180deg,var(--card), #fff8f9);
       border-radius:20px;
       box-shadow: 0 10px 30px rgba(15,40,20,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
-      padding:22px;
+      padding:30px 20px;
       display:grid;
       grid-template-rows:auto minmax(280px, 1fr) auto auto;
       align-items:center;
@@ -95,7 +95,7 @@
     h1{
       margin:0;
       color:#1a4a2f;
-      font-size:1.35rem;
+      font-size:1.2rem;
       text-align:center;
       text-shadow: 0 2px 0 rgba(255,255,255,0.6);
     }
@@ -108,14 +108,12 @@
 
     /* Heart container */
     .hero{
-      width:min(94vw, 360px);
+      width:min(85vw, 280px);
       aspect-ratio:3/4;
       display:block;
       position:relative;
       justify-self:center;
       align-self:center;
-
-      transform: translateX(-40px); /* Adjust the -10px until it looks perfect to you */
     }
 
     .heart-frame{
@@ -174,7 +172,32 @@
       color:#4a7a5d;
     }
 
+    p.sub a {
+      color: #4a7a5d;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px dashed #9ae6b4;
+      transition: all 0.3s ease;
+    }
+
+    p.sub a:hover {
+      color: #1a4a2f;
+      background-color: #f0fff4;
+    }
+
     /* Responsive tweaks */
+    @media (min-width: 480px) {
+      .card-wrap {
+        max-width: 400px;
+      }
+      h1 {
+        font-size: 1.35rem;
+      }
+      .hero {
+        width: min(90vw, 340px);
+      }
+    }
+
     @media (min-height:760px){
       .card{padding:28px}
       h1{font-size:1.65rem}
