@@ -36,7 +36,7 @@
   /* Force the background to be visible on the sides */
   .card-wrap {
     width: 100%;
-    max-width: 350px; /* This "hardcodes" the width to look like the desktop view */
+    max-width: 350px;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -48,11 +48,11 @@
     background: linear-gradient(180deg, var(--card), #fff8f9);
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(15,40,20,0.08);
-    padding: 40px 20px; /* Increased vertical padding for that "spaced" look */
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px; /* Hardcoded spacing between elements */
+    gap: 25px;
     border: 6px solid rgba(255,255,255,0.6);
     text-align: center;
   }
@@ -64,70 +64,66 @@
     line-height: 1.2;
   }
 
- /* Hardcoded Adjustment Version */
-/* 1. Update the Hero to handle the initial shift */
-.hero {
-  width: 320px; 
-  height: 320px; 
-  position: relative;
-  margin: 5px auto; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* This ensures the starting position is shifted left */
-}
+  /* Fixed and Enlarged Hero Container */
+  .hero {
+    width: 100%;
+    max-width: 280px; /* Increased from previous constrained size */
+    height: 280px; /* Matching height for a square container */
+    position: relative;
+    margin: 0 auto; /* Centers the hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.heart-frame {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pulse 1.2s ease-in-out infinite; /* Slightly slower pulse for a larger heart */
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  
-  /* Masking Logic */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
+  .heart-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 1.2s ease-in-out infinite;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    
+    /* Masking Logic */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
 
-/* 2. Update the Photo to "Zoom Out" and Move Up */
-.heart-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 10% sits much higher than 25%, effectively moving the photo up significantly */
-  object-position: center 5%; 
-  /* Scale at 1.0 (Zoomed out) instead of 1.05/1.1 */
-  transform: scale(0.7); 
-  
-  transform-origin: center;
-}
+  /* Better Photo Visibility */
+  .heart-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Adjusted positioning for better framing */
+    object-position: center 15%; 
+    /* Less aggressive zoom for better visibility */
+    transform: scale(0.85); 
+    transform-origin: center;
+  }
 
-.heart-ornament {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-}
+  .heart-ornament {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
 
-.heart-outline {
-  fill: transparent;
-  stroke: #ffffff;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  /* Ensure outline matches the new larger heart scale */
-  transform: scale(1);
-}
+  .heart-outline {
+    fill: transparent;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
 
   .caption {
     font-size: 0.9rem;
@@ -142,12 +138,11 @@
     border-bottom: 2px dashed #9ae6b4;
   }
 
-  /* 3. CRITICAL: Update the Animation to preserve the Left Shift */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
   /* Floating Hearts Background */
   .floating-hearts { position: fixed; inset: 0; z-index: 0; }
