@@ -85,6 +85,8 @@
   align-items: center;
   justify-content: center;
   animation: pulse 1.2s ease-in-out infinite; /* Slightly slower pulse for a larger heart */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
   
   /* Masking Logic */
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
@@ -101,9 +103,11 @@
   height: 100%;
   object-fit: cover;
   /* 10% sits much higher than 25%, effectively moving the photo up significantly */
-  object-position: center 10%; 
+  object-position: center 5%; 
   /* Scale at 1.0 (Zoomed out) instead of 1.05/1.1 */
-  transform: scale(1.0); 
+  transform: scale(0.7); 
+  
+  transform-origin: center;
 }
 
 .heart-ornament {
