@@ -81,25 +81,20 @@
   overflow: visible; 
 }
 
-  .heart-frame {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: pulse 1.2s ease-in-out infinite;
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    
-    /* Masking Logic */
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }
+  /* Ensure the heart frame fills the larger container */
+.heart-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 1.2s ease-in-out infinite;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
 
   /* Photo adjustment for size and vertical position */
 .heart-photo {
