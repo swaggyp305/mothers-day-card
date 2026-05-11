@@ -64,17 +64,17 @@
     line-height: 1.2;
   }
 
- /* Enlarged Heart Frame Fix */
+ /* Max-Size Heart Frame */
 .hero {
-  /* Increased from 260px to 320px */
-  width: 320px; 
-  height: 320px; 
+  /* This fills nearly the entire 350px card width */
+  width: 310px; 
+  height: 310px; 
   position: relative;
-  margin: 10px auto; 
+  margin: 5px auto; 
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Removed the -35px translateX to center it properly */
+  /* Removed all translateX to ensure it stays centered */
 }
 
 .heart-frame {
@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: pulse 0.8s ease-in-out infinite;
+  animation: pulse 1.2s ease-in-out infinite; /* Slightly slower pulse for a larger heart */
   
   /* Masking Logic */
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
@@ -99,8 +99,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Increased scale from 0.92 to 1.0 to fill the mask completely */
-  transform: scale(1.0); 
+  /* Centering the photo vertically and horizontally */
+  object-position: center 40%; 
+  /* Scale at 1.05 to ensure no white gaps at the edges of the mask */
+  transform: scale(1.05); 
 }
 
 .heart-ornament {
@@ -110,14 +112,16 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 10; /* Ensures the outline stays on top */
+  z-index: 10;
 }
 
 .heart-outline {
   fill: transparent;
-  stroke: #ffffff; /* Solid white */
-  stroke-width: 3; /* Slightly thicker for the cartoony look */
+  stroke: #ffffff;
+  stroke-width: 2.5;
   stroke-linecap: round;
+  /* Ensure outline matches the new larger heart scale */
+  transform: scale(1);
 }
 
   .caption {
