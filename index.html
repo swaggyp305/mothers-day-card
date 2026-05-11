@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Happy Mother's Day, Angela Mae!</title>
+
   <!-- Google Font (cartoony). Fallback to Comic Sans MS if not available. -->
   <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+
   :root {
     --bg: #eafaf0;
     --card: #ffffff;
@@ -15,14 +22,16 @@
     --muted: #6b6b6b;
   }
 
-  * { box-sizing: border-box; }
-  
+  * { 
+    box-sizing: border-box; 
+  }
+
   html, body { 
     height: 100%; 
     width: 100%;
     margin: 0; 
     padding: 0;
-    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-x: hidden;
   }
 
   body {
@@ -64,47 +73,49 @@
     line-height: 1.2;
   }
 
-  /* Enlarged Hero with Left-Shift */
-.hero {
-  width: 100%;
-  /* Pushing the size to fill the card as much as possible */
-  max-width: 340px; 
-  height: 340px; 
-  position: relative;
-  margin: 0 auto; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* Retaining the manual left shift */
-  transform: translateX(-20px); 
-  overflow: visible; 
-}
+  /* Fixed and Enlarged Hero Container */
+  .hero {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  /* Ensure the heart frame fills the larger container */
-.heart-frame {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pulse 1.2s ease-in-out infinite;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
+  .heart-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 1.2s ease-in-out infinite;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
 
- .heart-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 10%; 
-  /* Scale 1.0 ensures the photo fills the entire large heart */
-  transform: scale(1.0); 
-  transform-origin: center;
-}
+    /* Masking Logic */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z'/%3E%3C/svg%3E");
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Better Photo Visibility */
+  .heart-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    transform: scale(0.85);
+    transform-origin: center;
+  }
 
   .heart-ornament {
     position: absolute;
@@ -143,46 +154,128 @@
   }
 
   /* Floating Hearts Background */
-  .floating-hearts { position: fixed; inset: 0; z-index: 0; }
+  .floating-hearts { 
+    position: fixed; 
+    inset: 0; 
+    z-index: 0; 
+  }
+
   .f-heart { 
-    position: absolute; width: 15px; height: 15px; background: #ff9bb3; 
-    transform: rotate(-45deg); border-radius: 2px; animation: rise 6s infinite;
+    position: absolute; 
+    width: 15px; 
+    height: 15px; 
+    background: #ff9bb3; 
+    transform: rotate(-45deg); 
+    border-radius: 2px; 
+    animation: rise 6s infinite;
   }
-  .f-heart::before, .f-heart::after { content: ""; position: absolute; width: 15px; height: 15px; background: inherit; border-radius: 50%; }
-  .f-heart::before { top: -8px; left: 0; }
-  .f-heart::after { left: 8px; top: 0; }
+
+  .f-heart::before, 
+  .f-heart::after { 
+    content: ""; 
+    position: absolute; 
+    width: 15px; 
+    height: 15px; 
+    background: inherit; 
+    border-radius: 50%; 
+  }
+
+  .f-heart::before { 
+    top: -8px; 
+    left: 0; 
+  }
+
+  .f-heart::after { 
+    left: 8px; 
+    top: 0; 
+  }
+
   @keyframes rise {
-    0% { bottom: -20px; opacity: 0; transform: translateY(0) rotate(-45deg) scale(0.5); }
-    50% { opacity: 0.8; }
-    100% { bottom: 110%; opacity: 0; transform: translateY(-100px) rotate(-45deg) scale(1.2); }
+    0% { 
+      bottom: -20px; 
+      opacity: 0; 
+      transform: translateY(0) rotate(-45deg) scale(0.5); 
+    }
+
+    50% { 
+      opacity: 0.8; 
+    }
+
+    100% { 
+      bottom: 110%; 
+      opacity: 0; 
+      transform: translateY(-100px) rotate(-45deg) scale(1.2); 
+    }
   }
+
 </style>
+
 </head>
+
 <body>
 
   <!-- Usage: Replace the `src` on the <img> below with your photo URL. -->
+
   <div class="floating-hearts" aria-hidden="true">
     <div class="f-heart" style="left:12%; animation-duration:7s; animation-delay:0s;"></div>
+
     <div class="f-heart" style="left:28%; animation-duration:6s; animation-delay:1s; transform:scale(0.9) rotate(-45deg);"></div>
+
     <div class="f-heart" style="left:52%; animation-duration:8s; animation-delay:0.6s; transform:scale(1.1) rotate(-45deg);"></div>
+
     <div class="f-heart" style="left:76%; animation-duration:6.5s; animation-delay:0.2s; transform:scale(0.95) rotate(-45deg);"></div>
+
     <div class="f-heart" style="left:88%; animation-duration:7.8s; animation-delay:1.2s; transform:scale(0.85) rotate(-45deg);"></div>
   </div>
 
   <div class="card-wrap">
+
     <article class="card" role="article" aria-label="Mother's Day card for Angela Mae">
+
       <h1>Happy Mother's Day, Angela Mae!</h1>
+
       <div class="hero">
+
         <figure class="heart-frame" aria-hidden="false">
-          <img class="heart-photo" src="kidswuvu.jpeg" alt="Photo of Angela Mae inside a heart frame" />
-          <svg class="heart-ornament" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-            <path class="heart-outline" d="M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z" />
+
+          <img 
+            class="heart-photo" 
+            src="kidswuvu.jpeg" 
+            alt="Photo of Angela Mae inside a heart frame" 
+          />
+
+          <svg 
+            class="heart-ornament" 
+            viewBox="0 0 100 100" 
+            aria-hidden="true" 
+            focusable="false"
+          >
+            <path 
+              class="heart-outline" 
+              d="M50 86C48.5 85 46.5 83.5 44 81.5C23.5 65 10 54 10 35.5C10 21 21 10 35.5 10C43.5 10 49.5 13.7 50 18.5C50.5 13.7 56.5 10 64.5 10C79 10 90 21 90 35.5C90 54 76.5 65 56 81.5C53.5 83.5 51.5 85 50 86Z" 
+            />
           </svg>
+
         </figure>
+
       </div>
-      <div class="caption">Sending you big hugs and sparkly smiles 💚</div>
-      <p class="sub"><a href="https://www.youtube.com/watch?v=vtYR3MRmfWE" target="_blank" rel="noopener noreferrer">Click here!</a></p>
+
+      <div class="caption">
+        Sending you big hugs and sparkly smiles 💚
+      </div>
+
+      <p class="sub">
+        <a 
+          href="https://www.youtube.com/watch?v=vtYR3MRmfWE" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Click here!
+        </a>
+      </p>
+
     </article>
+
   </div>
 
 </body>
