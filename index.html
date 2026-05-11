@@ -64,17 +64,17 @@
     line-height: 1.2;
   }
 
-  /* Optimized Heart Frame Fix */
+ /* Enlarged Heart Frame Fix */
 .hero {
-  width: 260px; /* Set a fixed width */
-  height: 260px; /* Square container helps alignment */
+  /* Increased from 260px to 320px */
+  width: 320px; 
+  height: 320px; 
   position: relative;
-  margin: 20px auto; /* Adds consistent vertical spacing */
+  margin: 10px auto; 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transform: translateX(-35px)
+  /* Removed the -35px translateX to center it properly */
 }
 
 .heart-frame {
@@ -99,8 +99,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Reduced scale slightly to ensure it doesn't bleed past the white outline */
-  transform: scale(0.92); 
+  /* Increased scale from 0.92 to 1.0 to fill the mask completely */
+  transform: scale(1.0); 
 }
 
 .heart-ornament {
